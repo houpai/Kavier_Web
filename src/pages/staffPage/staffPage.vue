@@ -5,18 +5,28 @@
  */
 <template>
  <div class="staffPage_container">
-  1111
+   <commonNav></commonNav>
+   <div class="staff_box">
+     staff_box
+   </div>
+   <commonFooter></commonFooter>
  </div>
 </template>
 
 <script>
 
   import './staffPage.less'
-  import Swiper from "swiper";
-  import "swiper/swiper.min.css";
+  import commonNav from "@/components/commonNav/commonNav";'@/components/commonNav/commonNav.less'
+  import commonFooter from "@/components/commonFooter/commonFooter";
+  // import Swiper from "swiper";
+  // import "swiper/swiper.min.css";
 
   export default {
-    name: "staffPage"
+    name: "staffPage",
+    components:{
+      commonNav,
+      commonFooter
+    }
   }
 </script>
 
