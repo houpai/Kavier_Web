@@ -10,7 +10,8 @@
              @panmove.prevent="panMove"
              @panend.prevent="panEnd">
       <component v-for="(val,index) in componentList"
-                 :key="index" :is="val"
+                 :key="index"
+                 :is="val"
                  :htmlJson="index+''"
                  :style="{
                    zIndex:zIndex(index),
@@ -23,12 +24,14 @@
   </div>
 </template>
 <script>
+
 import "./total.less";
 
 var componentList = {
-  componentOne: require("./totalItem").default,
-  componentTwo: require("./totalItem").default,
-  componentThree:require("./totalItem").default
+  "c0": require("./totalItem").default,
+  "c1": require("./totalItem").default,
+  "c2": require("./totalItem").default,
+  "c3": require("./inputComponent").default
 };
 // var windowHeight = window.innerHeight;
 export default {
@@ -36,13 +39,13 @@ export default {
   components: componentList,
   data() {
     return {
-      windowHeight:0,
-      componentList: ["componentOne", "componentTwo",'componentThree'],
+      windowHeight: 0,
+      componentList: ["c0", "c1", "c2", "c3"],
       index: 0,
       distance: 0,//手指在页面滑动的距离
       nowZIndex: {
         before: 10,
-        current: 6,
+        current: 11,
         next: 10,
         others: 0
       },
@@ -298,8 +301,8 @@ export default {
   created() {
     this.$nextTick(() => {
       // console.log(this.$refs.containers.clientHeight)
-      this.windowHeight = this.$refs.containers.clientHeight
-    })
+      this.windowHeight = this.$refs.containers.clientHeight;
+    });
   }
 };
 </script>
