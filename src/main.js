@@ -12,6 +12,10 @@ import http from "../utils/request";
 import method from "../utils/method.js";
 import plugin from "../utils/plugin.js";
 
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, {name: 'v-touch'})
+import './assets/css/animate.css'
+
 
 Vue.use(Vant);
 Vue.use(method);

@@ -3,6 +3,7 @@ const vConsolePlugin = require("vconsole-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
+const webpack = require("webpack");
 
 module.exports = {
   publicPath: process.env.NODE_ENV === "production" ? "./" : "/Kavier_Web",
@@ -15,6 +16,13 @@ module.exports = {
     port: 4466
   },
   configureWebpack: config => {
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "windows.jQuery": "jquery"
+      })
+    );
     if (process.env.NODE_ENV === "production") {
       const plugins = [];
       // plugins.push(
