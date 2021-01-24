@@ -5,7 +5,7 @@
  */
 <template>
  <div class="staffPage_container">
-   <commonNav></commonNav>
+   <commonNav :show-back-btn="true"></commonNav>
    <div class="staff_box">
      <!-- Swiper -->
      <div class="swiper-container">
