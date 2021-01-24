@@ -8,6 +8,7 @@ module.exports = {
       viewportUnit: "vw", //指定需要转换成的视窗单位，建议使用vw
       selectorBlackList: [
         //指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名
+        ".fontSize"
       ],
       mediaQuery: true // 允许在媒体查询中转换`px`
     }

@@ -7,7 +7,25 @@
  <div class="staffPage_container">
    <commonNav></commonNav>
    <div class="staff_box">
-     staff_box
+     <!-- Swiper -->
+     <div class="swiper-container">
+       <div class="swiper-wrapper">
+         <div class="swiper-slide">
+            <div class="staff_item_box" v-for="index in 6" :key="index">
+              <div class="staff_item_container">
+                <img src="../../assets/img/border_small.png" alt="" class="border_img">
+                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3111700633,1206484463&fm=26&gp=0.jpg" alt="" class="staff_img">
+                <span class="salary_span fontSize">
+                  月薪1800元起
+                </span>
+                <span class="isOnline">已上岗</span>
+              </div>
+            </div>
+         </div>
+       </div>
+       <div class="swiper-button-next"></div>
+       <div class="swiper-button-prev"></div>
+     </div>
    </div>
    <commonFooter></commonFooter>
  </div>
@@ -18,126 +36,39 @@
   import './staffPage.less'
   import commonNav from "@/components/commonNav/commonNav";'@/components/commonNav/commonNav.less'
   import commonFooter from "@/components/commonFooter/commonFooter";
-  // import Swiper from "swiper";
-  // import "swiper/swiper.min.css";
+  import "swiper/swiper-bundle.css";
+  import Swiper from  'swiper/swiper-bundle.min'
 
   export default {
     name: "staffPage",
     components:{
       commonNav,
       commonFooter
+    },
+    data() {
+      return {
+
+      }
+    },
+    methods:{
+      swiperInit() {
+        var swiper = new Swiper('.swiper-container', {
+          pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      }
+    },
+    created() {
+      this.$nextTick(() => {
+        this.swiperInit()
+      })
     }
   }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-
-<!--<head>-->
-<!-- <meta charset="utf-8">-->
-<!-- <title>Swiper demo</title>-->
-<!-- &lt;!&ndash; Link Swiper's CSS &ndash;&gt;-->
-<!-- <link rel="stylesheet" href="../package/swiper-bundle.min.css">-->
-
-<!-- &lt;!&ndash; Demo styles &ndash;&gt;-->
-<!-- <style>-->
-<!--  html,-->
-<!--  body {-->
-<!--   position: relative;-->
-<!--   height: 100%;-->
-<!--  }-->
-
-<!--  body {-->
-<!--   background: #eee;-->
-<!--   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;-->
-<!--   font-size: 14px;-->
-<!--   color: #000;-->
-<!--   margin: 0;-->
-<!--   padding: 0;-->
-<!--  }-->
-
-<!--  .swiper-container {-->
-<!--   width: 100%;-->
-<!--   height: 100%;-->
-<!--  }-->
-
-<!--  .swiper-slide {-->
-<!--   text-align: center;-->
-<!--   font-size: 18px;-->
-<!--   background: #fff;-->
-
-<!--   /* Center slide text vertically */-->
-<!--   display: -webkit-box;-->
-<!--   display: -ms-flexbox;-->
-<!--   display: -webkit-flex;-->
-<!--   display: flex;-->
-<!--   -webkit-box-pack: center;-->
-<!--   -ms-flex-pack: center;-->
-<!--   -webkit-justify-content: center;-->
-<!--   justify-content: center;-->
-<!--   -webkit-box-align: center;-->
-<!--   -ms-flex-align: center;-->
-<!--   -webkit-align-items: center;-->
-<!--   align-items: center;-->
-<!--  }-->
-<!-- </style>-->
-<!--</head>-->
-
-<!--<body>-->
-<!--&lt;!&ndash; Swiper &ndash;&gt;-->
-<!--<div class="swiper-container">-->
-<!-- <div class="swiper-wrapper">-->
-<!--  <div class="swiper-slide">Slide 1</div>-->
-<!--  <div class="swiper-slide">Slide 2</div>-->
-<!--  <div class="swiper-slide">Slide 3</div>-->
-<!--  <div class="swiper-slide">Slide 4</div>-->
-<!--  <div class="swiper-slide">Slide 5</div>-->
-<!--  <div class="swiper-slide">Slide 6</div>-->
-<!--  <div class="swiper-slide">Slide 7</div>-->
-<!--  <div class="swiper-slide">Slide 8</div>-->
-<!--  <div class="swiper-slide">Slide 9</div>-->
-<!--  <div class="swiper-slide">Slide 10</div>-->
-<!-- </div>-->
-<!-- &lt;!&ndash; Add Pagination &ndash;&gt;-->
-<!-- <div class="swiper-pagination"></div>-->
-<!-- &lt;!&ndash; Add Arrows &ndash;&gt;-->
-<!-- <div class="swiper-button-next"></div>-->
-<!-- <div class="swiper-button-prev"></div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Swiper JS &ndash;&gt;-->
-<!--<script src="../package/swiper-bundle.min.js"></script>-->
-
-<!--&lt;!&ndash; Initialize Swiper &ndash;&gt;-->
-<!--<script>-->
-<!-- var swiper = new Swiper('.swiper-container', {-->
-<!--  pagination: {-->
-<!--   el: '.swiper-pagination',-->
-<!--   type: 'progressbar',-->
-<!--  },-->
-<!--  navigation: {-->
-<!--   nextEl: '.swiper-button-next',-->
-<!--   prevEl: '.swiper-button-prev',-->
-<!--  },-->
-<!-- });-->
-<!--</script>-->
-<!--</body>-->
-
-<!--</html>-->
 
