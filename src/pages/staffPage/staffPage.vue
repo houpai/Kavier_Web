@@ -10,15 +10,15 @@
      <!-- Swiper -->
      <div class="swiper-container">
        <div class="swiper-wrapper">
-         <div class="swiper-slide">
-            <div class="staff_item_box" v-for="index in 6" :key="index">
-              <div class="staff_item_container">
+         <div class="swiper-slide" v-for="(item,index) in staffList" :key="index">
+            <div class="staff_item_box" v-for="(subItem,subIndex) in item" :key="subIndex">
+              <div class="staff_item_container" @click.stop="goStaffDetail(subItem)">
                 <img src="../../assets/img/border_small.png" alt="" class="border_img">
-                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3111700633,1206484463&fm=26&gp=0.jpg" alt="" class="staff_img">
+                <img :src="subItem.headimgurl" alt="" class="staff_img">
                 <span class="salary_span fontSize">
-                  月薪1800元起
+                  月薪{{subItem.salary}}元
                 </span>
-                <span class="isOnline">已上岗</span>
+                <span class="isOnline" v-if="subItem.isonline">已上岗</span>
               </div>
             </div>
          </div>
@@ -39,6 +39,11 @@
   import "swiper/swiper-bundle.css";
   import Swiper from  'swiper/swiper-bundle.min'
 
+  import Vue from 'vue';
+  import { Toast } from 'vant';
+
+  Vue.use(Toast);
+
   export default {
     name: "staffPage",
     components:{
@@ -47,7 +52,7 @@
     },
     data() {
       return {
-
+        staffList:[]
       }
     },
     methods:{
@@ -62,11 +67,46 @@
             prevEl: '.swiper-button-prev',
           },
         });
+      },
+      getStaffList() {
+        let params = {
+          page:1,
+          limit:9999,
+          isshow:1
+        }
+        this.$http.request({
+          url:'TEmployeeController/selectPageModel',
+          method:'get',
+          body:params
+        }).then(res => {
+          if(res.data.success) {
+            console.log('staff list ===', res.data.data);
+            let staffList = res.data.data || [];
+            let averageStaffList = this.$averageArray(staffList,6);
+            this.staffList = averageStaffList
+            console.log('staff list ===', this.staffList);
+            this.$nextTick(() => {
+              this.swiperInit()
+            })
+          } else {
+            Toast(res.data.message || '获取员工列表接口报错')
+          }
+        })
+      },
+      goStaffDetail(item) {
+        console.log('item ====', item);
+        this.$router.push({
+          path:'/detail',
+          query:{
+            employeeId:item.id
+          }
+        })
       }
     },
     created() {
       this.$nextTick(() => {
-        this.swiperInit()
+        this.getStaffList()
+        // this.swiperInit()
       })
     }
   }

@@ -27,6 +27,15 @@ export default {
     commonFooter,
     total
   },
+  data() {
+    return {
+      employeeId:'',
+      // AppController/selectEmployeeInfoList?employeeId=618555990454964236
+    }
+  },
+  created() {
+    this.employeeId = this.$route.query.employeeId || ''
+  }
 };
 </script>
 

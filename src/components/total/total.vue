@@ -37,6 +37,23 @@ var componentList = {
 export default {
   name: "total",
   components: componentList,
+  props:{
+    employeeId:{
+      type:[String,Number],
+      default() {
+        return ''
+      }
+    }
+  },
+  watch:{
+    employeeId:{
+      deep:true,
+      immediate:true,
+      handler() {
+
+      }
+    }
+  },
   data() {
     return {
       windowHeight: 0,
@@ -295,13 +312,18 @@ export default {
           next: this.windowHeight
         };
       }
-    }
+    },
+    getStaffDetail() {
 
+    }
   },
   created() {
     this.$nextTick(() => {
       // console.log(this.$refs.containers.clientHeight)
       this.windowHeight = this.$refs.containers.clientHeight;
+      if(this.employeeId) {
+        this.getStaffDetail();
+      }
     });
   }
 };
