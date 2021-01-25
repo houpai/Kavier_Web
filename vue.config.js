@@ -16,13 +16,13 @@ module.exports = {
     port: 4466
   },
   configureWebpack: config => {
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "windows.jQuery": "jquery"
-      })
-    );
+    // config.plugins.push(
+    //   new webpack.ProvidePlugin({
+    //     $: "jquery",
+    //     jQuery: "jquery",
+    //     "windows.jQuery": "jquery"
+    //   })
+    // );
     if (process.env.NODE_ENV === "production") {
       const plugins = [];
       // plugins.push(
