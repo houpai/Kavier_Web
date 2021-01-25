@@ -56,15 +56,15 @@ export default {
 .inputComponent_container {
   height: 100%;
   width: 100%;
-  position: absolute;
   overflow: hidden;
   background-color: rgba(224, 202, 161, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 
   .staff_item_container {
-    margin: 50px 0 24px 0;
+    margin: 30px 0 24px 0;
     box-sizing: border-box;
     padding: 15px;
     width: 147px;
@@ -77,6 +77,7 @@ export default {
       display: block;
       width: 100%;
       height: 100%;
+      max-width: 100%!important;
     }
 
 
@@ -87,7 +88,8 @@ export default {
       bottom:0;
       top:0;
       display: block;
-      width: 147px;
+      width: 100%;
+      max-width: 100%!important;
       height: 100%;
     }
 

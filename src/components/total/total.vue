@@ -18,8 +18,12 @@
 </template>
 <script>
 
+  import Vue from 'vue';
+  import { Toast } from 'vant';
+
+  Vue.use(Toast);
   import './total.less'
-  import inputComponent from './inputComponent'
+  import inputComponent from '../inputComponent/inputComponent'
 
   export default {
     name: "total",
@@ -39,14 +43,30 @@
         deep: true,
         immediate: true,
         handler() {
-
+          this.getStaffDetail()
         }
       }
     },
     data() {
       return {}
     },
-    methods: {},
+    methods: {
+      getStaffDetail() {
+        this.$http.request({
+          url:'AppController/selectEmployeeInfoList',
+          method:'get',
+          body:{
+            employeeId:this.employeeId
+          }
+        }).then(res => {
+          if(res.data.success) {
+            console.log('getStaffDetail ====', res.data.data)
+          }else {
+            Toast(res.data.message || '获取接口信息失败')
+          }
+        })
+      }
+    },
     created() {
       this.$nextTick(() => {
         window.H5FullscreenPage.init({
