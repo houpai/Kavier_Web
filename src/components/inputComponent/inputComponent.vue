@@ -233,7 +233,7 @@
     flex-direction: column;
     align-items: center;
 
-    img {
+    /deep/ img {
       max-width: 88%;
     }
   }
