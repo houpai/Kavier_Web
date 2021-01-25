@@ -5,10 +5,10 @@
  */
 <template>
   <div class="staffDetail_container">
-    <div class="swiper-slide">
+    <div class="item_box">
       <div class="staff_item_container">
         <img src="../../assets/img/border.png" alt="" class="border_img">
-        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3111700633,1206484463&fm=26&gp=0.jpg" alt="" class="staff_img">
+        <img :src="staffDetail.employeeimgurl" alt="" class="staff_img">
       </div>
     </div>
 
@@ -38,4 +38,6 @@
     }
   }
 </script>
+
+
 

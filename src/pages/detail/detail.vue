@@ -17,7 +17,7 @@
             <div class="html_box" v-html="item.infohtml"></div>
           </div>
           <div class="item item3" :data-index="htmlList.length + 1">
-            <inputComponent></inputComponent>
+            <inputComponent :successHtml="successHtml" :staffDetail="employee"></inputComponent>
           </div>
         </div>
       </div>
@@ -54,7 +54,8 @@ export default {
       employeeId:'',
       employee:{},// 员工信息
       htmlList:[], //富文本页
-      currentIndex:0
+      currentIndex:0,
+      successHtml:{}
     }
   },
   methods:{
@@ -70,6 +71,7 @@ export default {
           console.log('getStaffDetail ====', res.data.data)
           this.employee = res.data.data.employee || {}
           this.htmlList = res.data.data.employeeInfoList || []
+          this.successHtml = res.data.data.systemInfo || {}
           let that = this;
           this.$nextTick(() => {
             window.H5FullscreenPage.init({
@@ -95,4 +97,8 @@ export default {
   }
 };
 </script>
+
+<style lang="less" scoped>
+
+</style>
 
