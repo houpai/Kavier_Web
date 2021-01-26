@@ -52,19 +52,20 @@
     },
     "2": {
       "upDrag": function (percentage, item) {
-        var scale = 1 - 0.2 * percentage//缩放系数，可以微调
-        var translateY = 1 - 0.7 * percentage//位置系数，可以微调
+        var scale = 1//缩放系数，可以微调
+        // var translateY = 1 - 0.7 * percentage//位置系数，可以微调
+        var translateY = 1 - 0.6 * percentage//位置系数，可以微调
         item.css("-webkit-transform", "scale(" + scale + ")")//当前item缩小
         item.next().css("-webkit-transform", "translate3d(0," + translateY * 100 + "%,0)") //下一个item上移动
       },
       "downDrag": function (percentage, item) {
-        var scale = 0.8 - 0.2 * percentage
-        var translateY = -(0.7 * percentage)
+        var scale = 1
+        var translateY = -(0.6 * percentage)
         item.css("-webkit-transform", "translate3d(0," + translateY * 100 + "%,0)")//当前item下移动
         item.prev().css("-webkit-transform", "scale(" + scale + ")")//前一个item放大
       },
       "nextSlide": function (item) {
-        item.css("-webkit-transform", "scale(.8)")
+        item.css("-webkit-transform", "scale(1)")
         item.next().css("-webkit-transform", "translate3d(0,0,0)")
       },
       "prevSlide": function (item) {
@@ -175,7 +176,7 @@
 
     if (percentage > 0) {
       // //向上拖动
-      var scale = 1 - 0.5 * percentage//缩放系数，可以微调
+      var scale = 0.99//缩放系数，可以微调
       // var translateY = 1 - 0.4*percentage;//位置系数，可以微调
       // $(event.target).css('-webkit-transform', 'scale('+scale+')');//当前item缩小
       // $(event.target).next().css('-webkit-transform', 'translateY('+translateY*100+'%)'); //下一个item上移动

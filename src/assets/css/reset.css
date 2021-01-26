@@ -102,3 +102,9 @@ html{
   display: none!important;
 }
 
+* { touch-action: none; }
+
+.overlay {
+  display: none!important;
+}
+
