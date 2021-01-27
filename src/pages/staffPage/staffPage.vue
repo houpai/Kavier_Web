@@ -6,9 +6,9 @@
 <template>
  <div class="staffPage_container">
    <commonNav :show-back-btn="true"></commonNav>
-   <div class="staff_box">
+   <div class="staff_box" ref="staff_box">
      <!-- Swiper -->
-     <div class="swiper-container">
+     <div class="swiper-container" ref="wrapper">
        <div class="swiper-wrapper">
          <div class="swiper-slide" v-for="(item,index) in staffList" :key="index">
             <div class="staff_item_box" v-for="(subItem,subIndex) in item" :key="subIndex">
@@ -82,12 +82,21 @@
           if(res.data.success) {
             console.log('staff list ===', res.data.data);
             let staffList = res.data.data || [];
-            let averageStaffList = this.$averageArray(staffList,6);
-            this.staffList = averageStaffList
-            console.log('staff list ===', this.staffList);
+            // this.$nextTick(() => {
+              console.log(this.$refs.wrapper.clientHeight)
+              let clientWidth = this.$refs.wrapper.clientWidth
+              let staffBoxHeight = this.$refs.wrapper.clientHeight / 375 *100;
+              let avergeNum = parseInt(staffBoxHeight / (160 / 375 * 100))
+              if(clientWidth > 800) avergeNum = 2;
+              let averageStaffList = this.$averageArray(staffList,avergeNum * 2 > 6 ? 6 : avergeNum*2);
+              this.staffList = averageStaffList
+              this.swiperInit()
+            // })
+
             this.$nextTick(() => {
               this.swiperInit()
             })
+
           } else {
             Toast(res.data.message || '获取员工列表接口报错')
           }
