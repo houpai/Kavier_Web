@@ -13,7 +13,7 @@
             <staffDetail :staffDetail="employee"></staffDetail>
           </div>
           <div class="item" v-for="(item,index) in htmlList" :key="item.id" :data-index="index + 1">
-            <p class="html_title">{{item.title}}</p>
+            <p class="html_title" v-if="item.title">{{item.title}}</p>
             <div class="html_box" v-html="item.infohtml"></div>
           </div>
           <div class="item item3" :data-index="htmlList.length + 1">
