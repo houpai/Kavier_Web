@@ -18,7 +18,7 @@
                 <span class="salary_span fontSize">
                   月薪{{subItem.salary}}元
                 </span>
-                <span class="isOnline" v-if="subItem.isonline">已上岗</span>
+                <span class="isOnline" v-if="subItem.isonline">已上岗 Hired</span>
               </div>
             </div>
          </div>
