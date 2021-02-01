@@ -5,7 +5,7 @@
 */
 <template>
   <div class="inputComponent_container totalItem_container">
-    <div class="input_box" v-if="!isSuccess">
+    <div class="input_box">
       <div class="item_box">
         <div class="staff_item_container">
           <img src="../../assets/img/border_small.png" alt="" class="border_img">
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="success_box" v-html="successHtml.value" v-else>
+<!--    <div class="success_box" v-html="successHtml.value" v-else>-->
     </div>
   </div>
 </template>
@@ -91,7 +91,8 @@
           body: params
         }).then(res => {
           if (res.data.success) {
-            this.isSuccess = true
+            // this.isSuccess = true
+            window.sessionStorage.setItem('successHtml', JSON.stringify(this.successHtml))
           } else {
             Toast(res.data.message || "提交失败")
           }
