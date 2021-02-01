@@ -93,6 +93,9 @@
           if (res.data.success) {
             // this.isSuccess = true
             window.sessionStorage.setItem('successHtml', JSON.stringify(this.successHtml))
+            this.$router.push({
+              path:'/successPage'
+            })
           } else {
             Toast(res.data.message || "提交失败")
           }
