@@ -9,7 +9,7 @@
       <div class="item_box">
         <div class="staff_item_container">
           <img src="../../assets/img/border_small.png" alt="" class="border_img">
-          <img :src="staffDetail.employeeimgurl" alt="" class="staff_img">
+          <img :src="staffDetail.headimgurl" alt="" class="staff_img">
           <span class="salary_span fontSize">
              月薪{{staffDetail.salary}}元
         </span>
@@ -184,6 +184,11 @@
     .form_box {
       /deep/ .van-cell:not(:last-child)::after {
         border-bottom: 0;
+      }
+
+      /deep/ .van-cell__title {
+        display: flex;
+        align-items: center;
       }
 
       /deep/ .van-cell {
