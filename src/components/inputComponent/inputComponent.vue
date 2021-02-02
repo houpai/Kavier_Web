@@ -30,7 +30,7 @@
     </div>
 
 <!--    <div class="success_box" v-html="successHtml.value" v-else>-->
-    </div>
+<!--    </div>-->
   </div>
 </template>
 
